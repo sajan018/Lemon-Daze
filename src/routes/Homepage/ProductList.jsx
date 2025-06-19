@@ -18,7 +18,7 @@ function ProductList() {
     }, []);
 
     return (
-        <div className="p-4 max-w-[1440px] mx-auto lg:mx-20 my-8">
+        <div className="p-4 max-w-[1440px] mx-auto sm:mx-20 my-8">
             <div className="mb-8 flex flex-col gap-2">
                 <h1 className="text-3xl text-center italic ..." >Our Products</h1>
                 <p className="antialiased text-center">Lemon-Daze latest collection is where elegance meets trend. Fashion that speaks your style.</p>
@@ -26,7 +26,7 @@ function ProductList() {
             </div>
 
             <div class="grid-container">
-                {products.map((item) => (
+                {products.slice(7).map((item) => (
                     <div
                         key={item._id}
                         className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col"
@@ -43,7 +43,7 @@ function ProductList() {
                         </div>
 
                         <div className="p-4 flex flex-col flex-grow">
-                            <h2 className="text-lg font-semibold text-gray-800 mb-1">
+                            <h2 className="text-sm sm:text-lg font-semibold text-gray-800 mb-1">
                                 {item.name}
                             </h2>
                             <p className="text-[12px] text-gray-600 mb-2">{item.description}</p>
@@ -69,16 +69,16 @@ function ProductList() {
                             <div className="flex items-center justify-between mb-4">
                                 <div className="flex items-center">
                                     <FaTruck className="text-blue-500 mr-2" />
-                                    <span className="text-sm text-gray-600">Free Shipping</span>
+                                    <span className="text-[10px] sm:text-sm text-gray-600">Free Shipping</span>
                                 </div>
                                 <div className="flex items-center">
                                     <FaClock className="text-blue-500 mr-2" />
-                                    <span className="text-sm text-gray-600">In Stock</span>
+                                    <span className="text-[10px] sm:text-sm text-gray-600">In Stock</span>
                                 </div>
                             </div>
 
                             <div className="flex space-x-2 mt-auto">
-                                <button className="flex w-full justify-center gap-3 items-center border text-[15px] border-black text-gray-700 py-2 px-4 rounded-full font-semibold hover:border-red-500 transition duration-200">
+                                <button className="flex w-full justify-center gap-3 items-center border text-[12px] xs:text-[15px] border-black text-gray-700 py-2 px-4 rounded-full font-semibold hover:border-red-500 transition duration-200">
                                     <GiLoveHowl /> Add to Cart
                                 </button>
                             </div>

@@ -21,7 +21,7 @@ function Header({children}) {
 function checkPath(){
     if(currentpath!='/addProduct'){
     return (
-      <button className="py-2 bg-lime-500 px-5 rounded-full text-sm  text-gray-700 font-semibold hover:font-bold"><Link to='/addProduct'>Want to Sell ?</Link></button>
+      <button className="py-2 bg-lime-500 px-5 rounded-full text-[12px] xs:text-sm  text-gray-700 font-semibold hover:font-bold"><Link to='/addProduct'>Want to Sell ?</Link></button>
     )
   }
 }
@@ -29,8 +29,8 @@ function checkPath(){
 
   return (
     <div className="max-w-[1500px] mx-auto">
-     <div className="h-[40px] bg-slate-100 flex items-center justify-between px-10 py-10">
-      <Link to='/' className="font-bold text-xl">Lemon Daze</Link>
+     <div className="h-[40px] flex items-center justify-between px-3 sm:px-10 py-10">
+      <Link to='/' className="font-bold text-xl"><span className="opacity-60">Lemon</span>Daze</Link>
       <div>
         {user ? (
             <div className="flex items-center gap-2">
