@@ -8,6 +8,7 @@ import AddProduct from './routes/AddProduct/AddProduct.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ProtectefRoutes from './ProtectedRoutes.js'
 import { AuthProvider } from './context/authContext.jsx'
+import MyCart from './routes/Cart/Cart.jsx'
 import Header from './Navbar.jsx'
 
 createRoot(document.getElementById('root')).render(
@@ -23,6 +24,11 @@ createRoot(document.getElementById('root')).render(
               <ProtectefRoutes>
                 < AddProduct />
               </ProtectefRoutes>} />
+            <Route path="/Cart" element={
+              <ProtectefRoutes>
+                < MyCart />
+              </ProtectefRoutes>} />
+
           </Routes>
         </Header>
       </AuthProvider>
