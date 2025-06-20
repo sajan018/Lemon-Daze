@@ -1,32 +1,48 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import GlobalApi from "../../Api/GlobalApi";
-import "./ProductList.css"
-import { FaStar, FaStarHalfAlt, FaTruck, FaClock } from "react-icons/fa";
-import { GiLoveHowl } from "react-icons/gi";
+import { authContext } from "../../context/authContext";
+import { FaClock, FaTruck } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
-function ProductList() {
-    const [products, setProducts] = useState([]);
+function MyCart() {
+    const [cart, setCart] = useState([]);
+    const user = useContext(authContext);
 
-    useEffect(() => {
-        GlobalApi.getAllProduct()
+    const getCart = () => {
+        const userId = user?.user?.user?._id;
+        if (!userId) return;
+
+        GlobalApi.getAllCart(userId)
             .then((res) => {
-                setProducts(res.data.products);
+                setCart(res.data);
             })
             .catch((err) => {
-                console.error("Error fetching products", err);
+                console.log(err);
             });
-    }, []);
+    };
+
+    useEffect(() => {
+        getCart();
+    }, [user]);
+
+    // delete cart item
+    function DeleteCart(productId) {
+        const userId = user?.user?.user?._id;
+        GlobalApi.deleteCart(userId, productId)
+            .then((res) => {
+                alert("deleted successfully");
+                getCart(); // refresh cart after deletion
+            })
+            .catch((err) => {
+                console.log(err);
+                alert("something went wrong");
+            });
+    }
 
     return (
-        <div className="p-4 max-w-[1440px] mx-auto sm:mx-20 my-8">
-            <div className="mb-8 flex flex-col gap-2">
-                <h1 className="text-3xl text-center italic ..." >Our Products</h1>
-                <p className="antialiased text-center">Lemon-Daze latest collection is where elegance meets trend. Fashion that speaks your style.</p>
-
-            </div>
-
-            <div className="grid-container">
-                {products.slice(7).map((item) => (
+        <div>
+            <div className="grid-container mt-10 md:px-32">
+                {cart.map((item) => (
                     <div
                         key={item._id}
                         className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col"
@@ -55,6 +71,16 @@ function ProductList() {
                                 </p>
                             </div>
 
+                            {/* <div className="flex items-center mb-3">
+                                         <div className="flex text-yellow-400">
+                                             <FaStar />
+                                             <FaStar />
+                                             <FaStar />
+                                             <FaStar />
+                                             <FaStarHalfAlt />
+                                         </div>
+                                         <span className="text-gray-600 text-sm ml-2">(4.5/5)</span>
+                                     </div> */}
 
                             <div className="flex items-center justify-between mb-4">
                                 <div className="flex items-center">
@@ -68,8 +94,10 @@ function ProductList() {
                             </div>
 
                             <div className="flex space-x-2 mt-auto">
-                                <button className="flex w-full justify-center gap-3 items-center border text-[12px] xs:text-[15px] border-black text-gray-700 py-2 px-4 rounded-full font-semibold hover:border-red-500 transition duration-200">
-                                    <GiLoveHowl /> Add to Cart
+                                <button
+                                    onClick={() => DeleteCart(item._id)}
+                                    className="flex w-full justify-center gap-3 items-center border text-[12px] xs:text-[15px] border-black text-gray-700 py-2 px-4 rounded-full font-semibold hover:border-red-500 transition duration-200">
+                                    <MdDelete /> Delete
                                 </button>
                             </div>
                         </div>
@@ -77,11 +105,11 @@ function ProductList() {
                 ))}
             </div>
 
-            {products.length === 0 && (
+            {cart.length === 0 && (
                 <p className="text-center text-gray-500 mt-10">No products found.</p>
             )}
         </div>
     );
 }
 
-export default ProductList;
+export default MyCart;

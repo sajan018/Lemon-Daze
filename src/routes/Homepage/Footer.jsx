@@ -7,12 +7,12 @@ import { Link } from "react-router";
 
 function Footer() {
     return (
-        <div class="text-center py-6">
+        <div className="text-center py-6">
             <Link to='/' className="font-bold text-xl"><span className="opacity-60">Lemon</span>Daze</Link>
-            <span class="block text-sm text-center text-gray-500">© 2021-2022 Landwind™. All Rights Reserved.
+            <span className="block text-sm text-center text-gray-500">© 2021-2022 Landwind™. All Rights Reserved.
             </span>
 
-            <ul class="flex justify-center mt-5 space-x-5">
+            <ul className="flex justify-center mt-5 space-x-5">
                 <li>
                     <FaFacebook />
                 </li>

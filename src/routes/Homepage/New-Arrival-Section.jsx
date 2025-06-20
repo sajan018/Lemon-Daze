@@ -4,18 +4,41 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import GlobalApi from "../../Api/GlobalApi";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { authContext } from "../../context/authContext";
 import "./New-Arrival-Section.css"
 import { GiAirplaneArrival } from "react-icons/gi";
+import { useNavigate } from "react-router";
+
 function NewArrival() {
     const [products, setProducts] = useState([]);
-
+    const user = useContext(authContext);
+    const navigate = useNavigate();
     useEffect(() => {
         GlobalApi.getAllProduct()
             .then((res) => setProducts(res.data.products))
             .catch((err) => console.error("Failed to fetch", err));
     }, []);
 
+    function AddToCart(productId) {
+        if (!user?.user?.user?._id) {
+            alert("Please login to add product to cart");
+            navigate("/login");
+            return;
+        }
+        const data = {
+            userId: user.user.user._id,
+            productId: productId,
+        }
+        GlobalApi.AddToCart(data)
+            .then((res) => {
+                alert("Product added to cart")
+            })
+            .catch((err) => {
+                alert("Failed to add product to cart")
+                console.log(err);
+            })
+    }
     return (
         <div className="xs:mx-10 sm:mx-20 p-4">
             <p className="text-3xl cursive flex gap-3 py-7 my-5 justify-center items-center"><GiAirplaneArrival />New Arrivals <hr className="w-[78%] h-[10px] m-3" /></p>
@@ -46,7 +69,7 @@ function NewArrival() {
                         <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
                             <div className="relative group">
                                 <img
-                                    src={`https://lemon-daze-backend-production.up.railway.app${item.image}`}
+                                    src={`http://localhost:8000${item.image}`}
                                     alt={item.name}
                                     className="w-full h-72 object-cover rounded-2xl hover:opacity-50"
                                 />
@@ -56,6 +79,7 @@ function NewArrival() {
 
                                 {/* Hover button */}
                                 <button
+                                    onClick={() => AddToCart(item._id)}
                                     className="absolute invisible group-hover:visible top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
         border border-gray-700 text-gray-800 bg-white text-[10px] xs:text-sm hover:bg-gray-800 hover:text-opacity-70 hover:text-white font-semibold px-2 xs:px-4 py-2 rounded-full transition duration-300"
                                 >
