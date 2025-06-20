@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosClient=axios.create({
-    baseURL:'http://localhost:8000/'
+    baseURL:'https://lemon-daze-backend-production.up.railway.app/'
 });
 
 const createUser=(data)=>axiosClient.post('/auth/register',data)
