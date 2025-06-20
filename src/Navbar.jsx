@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { GiSelfLove } from "react-icons/gi";
+import Footer from "./Footer";
 function Header({ children }) {
   const { user, setUser } = useContext(authContext);
   const [toggle, setToggle] = useState(false);
@@ -79,6 +80,7 @@ function Header({ children }) {
         </div>
       </div>
       {children}
+      <Footer />
     </div>
   );
 }
