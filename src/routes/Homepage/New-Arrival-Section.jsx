@@ -41,7 +41,7 @@ function NewArrival() {
     }
     return (
         <div className="xs:mx-10 sm:mx-20 p-4">
-            <p className="text-3xl cursive flex gap-3 py-7 my-5 justify-center items-center"><GiAirplaneArrival />New Arrivals <hr className="w-[78%] h-[10px] m-3" /></p>
+            <div className="text-3xl cursive flex gap-3 py-7 my-5 justify-center items-center"><GiAirplaneArrival />New Arrivals <hr className="w-[78%] h-[10px] m-3" /></div>
             <Swiper
                 modules={[Navigation, Pagination]}
                 spaceBetween={20}

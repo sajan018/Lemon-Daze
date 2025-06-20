@@ -1,4 +1,3 @@
-import Footer from "./Footer.jsx";
 import HeroSection from "./Hero-Section.jsx";
 import NewArrival from "./New-Arrival-Section.jsx";
 import ProductList from "./ProductList.jsx";
@@ -12,7 +11,6 @@ function Homepage (){
              <NewArrival/>
             <ProductList/>
             <WhyChooseUs/>
-            <Footer/>
         </div>
     )
 }
