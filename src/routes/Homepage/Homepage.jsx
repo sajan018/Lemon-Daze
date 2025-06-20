@@ -1,8 +1,8 @@
-import Footer from "./footer";
-import HeroSection from "./Hero-Section";
-import NewArrival from "./New-Arrival-Section";
-import ProductList from "./ProductList";
-import WhyChooseUs from "./WhyChooseUs";
+import Footer from "./footer.jsx";
+import HeroSection from "./Hero-Section.jsx";
+import NewArrival from "./New-Arrival-Section.jsx";
+import ProductList from "./ProductList.jsx";
+import WhyChooseUs from "./WhyChooseUs.jsx";
 
 
 function Homepage (){
