@@ -22,7 +22,7 @@ function AppRoutes() {
 
   return (
     <>
-      {loader && <Loader />}
+     {loader && <Loader />}
       <Header>
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<App />} />
