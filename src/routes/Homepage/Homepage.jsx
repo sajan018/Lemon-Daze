@@ -1,11 +1,18 @@
-import ProductList from "./ProductList";
+import HeroSection from "./Hero-Section.jsx";
+import NewArrival from "./New-Arrival-Section.jsx";
+import ProductList from "./ProductList.jsx";
+import WhyChooseUs from "./WhyChooseUs.jsx";
 
+function Homepage() {
 
-function Homepage (){
-    return(
+    return (
         <div>
-            <ProductList/>
+            <HeroSection />
+            <NewArrival />
+            <ProductList />
+            <WhyChooseUs />
         </div>
-    )
+    );
 }
+
 export default Homepage;
