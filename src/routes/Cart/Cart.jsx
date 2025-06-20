@@ -7,6 +7,7 @@ import { MdDelete } from "react-icons/md";
 function MyCart() {
     const [cart, setCart] = useState([]);
     const user = useContext(authContext);
+    const [addingToCartId, setAddingToCartId] = useState(null);
 
     const getCart = () => {
         const userId = user?.user?.user?._id;
@@ -28,6 +29,7 @@ function MyCart() {
     // delete cart item
     function DeleteCart(productId) {
         const userId = user?.user?.user?._id;
+        setAddingToCartId(productId);
         GlobalApi.deleteCart(userId, productId)
             .then((res) => {
                 alert("deleted successfully");
@@ -36,13 +38,16 @@ function MyCart() {
             .catch((err) => {
                 console.log(err);
                 alert("something went wrong");
+            })
+            .finally(()=>{
+                setAddingToCartId(null);
             });
     }
 
     return (
-        <div className="">
+        <div className="min-h-[80vh]">
             <div className="grid-container mt-10 md:px-32">
-                {cart.map((item) => (
+                {[...cart].reverse().map((item) => (
                     <div
                         key={item._id}
                         className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col"
@@ -96,8 +101,10 @@ function MyCart() {
                             <div className="flex space-x-2 mt-auto">
                                 <button
                                     onClick={() => DeleteCart(item._id)}
-                                    className="flex w-full justify-center gap-3 items-center border text-[12px] xs:text-[15px] border-black text-gray-700 py-2 px-4 rounded-full font-semibold hover:border-red-500 transition duration-200">
-                                    <MdDelete /> Delete
+                                    disabled={addingToCartId===item._id}
+                                    className={`flex w-full justify-center gap-3 items-center border text-[12px] xs:text-[15px] border-black text-gray-700 py-2 px-4 rounded-full font-semibold hover:border-red-500 transition duration-200
+                                    ${addingToCartId === item._id ? "opacity-50 cursor-not-allowed" : "hover:border-gray-500"}`}>
+                                    <MdDelete /> {addingToCartId===item?"Deleting...":"Delete"}
                                 </button>
                             </div>
                         </div>
