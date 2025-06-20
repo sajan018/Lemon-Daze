@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import App from './App.jsx';
 import Login from './routes/Login/Login.jsx';
 import Register from './routes/Register/Register.jsx';
@@ -8,24 +8,23 @@ import ProtectefRoutes from './ProtectedRoutes.js';
 import MyCart from './routes/Cart/Cart.jsx';
 import Loader from './Loader.jsx';
 import Header from './Navbar.jsx';
+import { setupInterceptors } from "./Api/AxiosClient.jsx";
+import { useLoader } from "./context/LoaderContext";
 
 function AppRoutes() {
   const location = useLocation();
-  const [loading, setLoading] = useState(false);
+  const { loader, setLoader } = useLoader();
 
+  // Setup interceptors for axios when app mounts
   useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 800);
-    return () => clearTimeout(timer);
-  }, [location.pathname]);
+    setupInterceptors(setLoader);
+  }, [setLoader]);
 
   return (
     <>
-      {loading && <Loader />}
+      {loader && <Loader />}
       <Header>
-      <Routes>
+      <Routes location={location} key={location.pathname}>
         <Route path="/" element={<App />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />

@@ -40,7 +40,7 @@ function MyCart() {
     }
 
     return (
-        <div>
+        <div className="">
             <div className="grid-container mt-10 md:px-32">
                 {cart.map((item) => (
                     <div
@@ -106,7 +106,7 @@ function MyCart() {
             </div>
 
             {cart.length === 0 && (
-                <p className="text-center text-gray-500 mt-10">No products found.</p>
+                <p className="text-center text-gray-500 mt-10 flex items-center justify-center h-[60vh]">No products found.</p>
             )}
         </div>
     );

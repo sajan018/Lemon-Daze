@@ -1,8 +1,6 @@
-import axios from "axios";
+import axiosClient from "./AxiosClient.jsx";
 
-const axiosClient=axios.create({
-    baseURL:'https://lemon-daze-backend-production.up.railway.app/'
-});
+// API functions
 
 const createUser=(data)=>axiosClient.post('/auth/register',data)
 
@@ -17,17 +15,13 @@ const AddToCart=(data)=>axiosClient.post("/Cart",data);
 const getAllCart = (data) => axiosClient.get(`/Cart/${data}`);
 
 const deleteCart = (userId, productId) => axiosClient.delete(`/Cart/${userId}/${productId}`);
-
-
-
-
-
-export default{
-    createUser,
-    CheckLogin,
-    AddProduct,
-    getAllProduct,
-    AddToCart,
-    getAllCart,
-    deleteCart
-}
+// Export all together
+export default {
+  createUser,
+  CheckLogin,
+  AddProduct,
+  getAllProduct,
+  AddToCart,
+  getAllCart,
+  deleteCart,
+};
