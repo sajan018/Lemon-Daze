@@ -22,7 +22,7 @@
 ## 🛠️ Tech Stack  
 
 - **Frontend:** React, Tailwind CSS, React Router, Context API  
-- **Backend:** Node.js, Express.js, MongoDB  
+- **Backend:** Node.js, Express.js, MongoDB , mongoose , multer 
 - **Auth:** JWT (JSON Web Token)  
 - **HTTP Client:** Axios (with interceptors for loader management)  
 - **Deployment:** Railway (backend), Vercel (frontend)
