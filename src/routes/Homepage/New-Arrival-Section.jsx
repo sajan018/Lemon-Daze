@@ -12,6 +12,7 @@ import { useNavigate } from "react-router";
 
 function NewArrival() {
     const [products, setProducts] = useState([]);
+    const [addingToCartId, setAddingToCartId] = useState(null);
     const user = useContext(authContext);
     const navigate = useNavigate();
     useEffect(() => {
@@ -26,6 +27,7 @@ function NewArrival() {
             navigate("/login");
             return;
         }
+        setAddingToCartId(productId);
         const data = {
             userId: user.user.user._id,
             productId: productId,
@@ -37,7 +39,9 @@ function NewArrival() {
             .catch((err) => {
                 alert("Failed to add product to cart")
                 console.log(err);
-            })
+            }).finally(() => {
+                setAddingToCartId(null);
+            });
     }
     return (
         <div className="xs:mx-10 sm:mx-20 p-4">
@@ -80,10 +84,14 @@ function NewArrival() {
                                 {/* Hover button */}
                                 <button
                                     onClick={() => AddToCart(item._id)}
-                                    className="absolute invisible group-hover:visible top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-        border border-gray-700 text-gray-800 bg-white text-[10px] xs:text-sm hover:bg-gray-800 hover:text-opacity-70 hover:text-white font-semibold px-2 xs:px-4 py-2 rounded-full transition duration-300"
+                                    disabled={addingToCartId === item._id}
+                                    className={`absolute invisible group-hover:visible top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+  border border-gray-700 text-gray-800 bg-white text-[10px] xs:text-sm hover:bg-gray-800 hover:text-opacity-70 
+  hover:text-white font-semibold px-2 xs:px-4 py-2 rounded-full transition duration-300 
+  ${addingToCartId === item._id ? "opacity-50 cursor-not-allowed" : "hover:border-gray-500"}`}
+
                                 >
-                                    Add to Cart
+                                    {addingToCartId === item._id ? "Adding..." : "Add To Cart"}
                                 </button>
                             </div>
 
