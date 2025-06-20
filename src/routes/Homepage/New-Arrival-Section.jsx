@@ -34,7 +34,7 @@ function NewArrival() {
         }
         GlobalApi.AddToCart(data)
             .then((res) => {
-                alert("Product added to cart")
+                alert(res.data.message);
             })
             .catch((err) => {
                 alert("Failed to add product to cart")

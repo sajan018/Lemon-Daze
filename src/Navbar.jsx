@@ -5,9 +5,11 @@ import { useLocation } from "react-router-dom";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { GiSelfLove } from "react-icons/gi";
 import Footer from "./Footer";
+import { useLoader } from "./context/LoaderContext";
 function Header({ children }) {
   const { user, setUser } = useContext(authContext);
   const [toggle, setToggle] = useState(false);
+  const { loader } = useLoader();
   const navigate = useNavigate();
   const location = useLocation();
   const currentpath = location.pathname;
@@ -46,7 +48,7 @@ function Header({ children }) {
   }
 
   return (
-    <div className="max-w-[1500px] mx-auto">
+    <div className={loader?"hidden":"flex flex-col max-w-[1500px] mx-auto "}>
       <div className="h-[40px] flex items-center justify-between px-3 sm:px-10 md:px-32 py-10">
         <Link to='/' className="font-bold text-xl"><span className="opacity-60">Lemon</span>Daze</Link>
         <div>
