@@ -1,7 +1,7 @@
 # 🍋 Lemon-Daze - E-Commerce Web App
 
 ## 📖 Overview  
-**Lemon-Daze** is a full-stack modern e-commerce platform where users can browse, add products to a cart, manage their cart items, and perform secure user authentication.
+**Lemon-Daze** is a full-stack modern e-commerce platform where users can browse,Sell product , add products to a cart, manage their cart items, and perform secure user authentication.
 
 ---
 
