@@ -104,7 +104,7 @@ function MyCart() {
                                     disabled={addingToCartId===item._id}
                                     className={`flex w-full justify-center gap-3 items-center border text-[12px] xs:text-[15px] border-black text-gray-700 py-2 px-4 rounded-full font-semibold hover:border-red-500 transition duration-200
                                     ${addingToCartId === item._id ? "opacity-50 cursor-not-allowed" : "hover:border-gray-500"}`}>
-                                    <MdDelete /> {addingToCartId===item?"Deleting...":"Delete"}
+                                    <MdDelete /> {addingToCartId===item._id?"Deleting...":"Delete"}
                                 </button>
                             </div>
                         </div>
