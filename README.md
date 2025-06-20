@@ -33,9 +33,9 @@
 
 🌐 [Live Site](https://lemon-daze.vercel.app)
 
-📂 [Backend Repo](https://github.com/sajan/lemon-daze-backend)
+📂 [Backend Repo](https://github.com/singh-Jyoti/Lemon-Daze-Backend-)
 
-📂 [Frontend Repo](https://github.com/sajan/lemon-daze-frontend)
+📂 [Frontend Repo](https://github.com/singh-Jyoti/Lemon-Daze)
 
 ---
 
