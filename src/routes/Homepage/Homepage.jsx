@@ -1,4 +1,4 @@
-import Footer from "./footer.jsx";
+import Footer from "./Footer.jsx";
 import HeroSection from "./Hero-Section.jsx";
 import NewArrival from "./New-Arrival-Section.jsx";
 import ProductList from "./ProductList.jsx";
