@@ -69,7 +69,7 @@ function NewArrival() {
                         <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
                             <div className="relative group">
                                 <img
-                                    src={`http://localhost:8000${item.image}`}
+                                    src={`https://lemon-daze-backend-production.up.railway.app${item.image}`}
                                     alt={item.name}
                                     className="w-full h-72 object-cover rounded-2xl hover:opacity-50"
                                 />
