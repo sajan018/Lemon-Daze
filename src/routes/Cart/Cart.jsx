@@ -46,7 +46,7 @@ function MyCart() {
 
     return (
         <div className="min-h-[80vh]">
-            <div className="grid-container mt-10 md:px-32">
+            <div className="grid-container mt-10 p-4 sm:px-10 md:px-32">
                 {[...cart].reverse().map((item) => (
                     <div
                         key={item._id}
